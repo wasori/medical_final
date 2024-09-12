@@ -1,0 +1,335 @@
+@charset "utf-8";
+
+.robo-left {
+    width: 76%;
+    height: 100vh;
+    float: left;
+}
+
+.robo-right {
+    width: 24%;
+    height: 100vh;
+    float: left;
+}
+
+.robo-map {
+    margin-top: 70px;
+    height: 92vh;
+    padding: 5px 0px 15px 10px;
+}
+
+.robo-map p {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 5px 0px 15px 0px;
+}
+
+.robo-map-area {
+    width: 100%;
+    height: 775px;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 3px;
+    border: 1px solid rgb(182, 182, 182);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#floor2 {
+    width: 1415px;
+    height: 467px;
+    position: relative;
+}
+
+.robo-manager {
+    margin-top: 70px;
+    height: 92vh;
+    padding: 15px 15px 15px 15px;
+}
+
+.robo-manager-area {
+    width: 100%;
+    height: 775px;
+    margin-top: 0px;
+    padding: 0px 10px 0px 10px;
+}
+
+.robo-manager-area span {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0px 25px 0px 0px;
+}
+
+.robo-control-area p {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.robo-control-area-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.robo-control-area-1 span{
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.robo-control-area-1 select{
+    width: 83px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.robo-control-area-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.robo-control-area-2 button {
+    width: 125px;
+    height: 40px;
+    margin-right: 20px;
+    font-weight: 700;
+}
+
+.robo-info-area p {
+    font-size: 23px;
+    font-weight: 700;
+    margin: 5px 0px 5px 0px
+}
+
+.robo-info-table {
+    margin-top: 10px;
+    overflow-y: auto;
+    height: 180px;
+}
+
+.robo-alert {
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+}
+
+.robo-alert-area {
+    width: 100%;
+    height: 260px;
+    background-color: aliceblue;
+    border-radius: 3px;
+    border: 1px solid rgb(182, 182, 182);
+}
+
+.robo-alert p{
+    font-size: 23px;
+    font-weight: 600;
+    margin: 5px 0px 5px 0px;
+}
+
+.robo-alarm-list {
+    overflow-y: auto;
+    height: 260px;
+    padding: 0;
+    margin: 0;
+}
+
+.robo-alarm-list li {
+    border-bottom: 1px solid #A2A7B3;
+    padding: 11px 20px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.robo-alarm-list li:after {
+    content: '';
+    display: inline-block;
+    clear: both;
+}
+
+.robo-alarm-list .txt {
+    float: left;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.robo-alarm-list .group {
+    float: left;
+}
+
+.robo-alarm-list .time {
+    margin-right: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.robo-alarm-list button {
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+
+.blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        background-color: rgb(255, 66, 66);
+    }
+}
+.robo-move p{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 5px 0px 5px 0px;
+}
+
+.robo-move-area {
+    width: 100%;
+    height: 280px;
+    background-color: aliceblue;
+    border-radius: 3px;
+    border: 1px solid rgb(182, 182, 182);
+    overflow-y: auto;
+}
+
+.robo-move-list {
+    overflow-y: auto;
+    height: 260px;
+    padding: 0;
+    margin: 0;
+}
+
+.robo-move-list li {
+    border-bottom: 1px solid #A2A7B3;
+    padding: 11px 20px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.robo-move-list li:after {
+    content: '';
+    display: inline-block;
+    clear: both;
+}
+
+.robo-move-list .txt {
+    float: left;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.robo-move-list .group {
+    float: right;
+}
+
+.robo-move-list .time {
+    margin-right: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+body{
+    position: relative;
+}
+
+.popup{
+    position: absolute;
+    top: 230px;
+    left: 700px;
+
+    width: 550px;
+    height: 200px;
+
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+
+    flex-direction: column;
+    z-index: 1;
+}
+
+.popup .tit{
+    width: 400px;
+    height: 30px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.popup .tit span{
+    font-size: 16px;
+}
+
+.popup .comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 500px;
+    height: 70px;
+    font-weight: bold;
+}
+
+.popup .comment p{
+    width:100px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.popup .comment input{
+    width: 350px;
+    height: 40px;
+}
+
+.popup .bn{
+    width: 200px;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.popup .bn button{
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.popup .bn button:nth-child(1){
+    background-color: rgb(132, 220, 132);
+}
+
+.popup .bn button:nth-child(2){
+    background-color: rgb(220, 136, 132);
+}
+.popup .bn button:nth-child(3){
+    background-color: rgb(124, 124, 124);
+}
+
+#myCanvas,
+#myCanvas2 {
+    position: absolute;
+    transform: scaleY(-1);
+}

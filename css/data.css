@@ -1,0 +1,313 @@
+@charset "utf-8";
+
+.data-left {
+    width: 23%;
+    height: 100vh;
+    float: left;
+}
+
+.data-right {
+    width: 77%;
+    height: 100vh;
+    float: left;
+}
+
+.data-lookup {
+    margin-top: 70px;
+    height: 92vh;   
+    padding: 10px 10px 10px 30px;
+}
+
+.data-lookup p {
+    font-size: 23px;
+    font-weight: 700;
+    margin: 15px 0px 15px 0px;
+}
+
+.data-lookup-area {
+    background-color: aliceblue;
+    border: 1px solid rgb(179, 179, 179);
+    width: 100%;
+    height: 770px;
+}
+
+.result-lookup {
+    margin-top: 70px;
+    height: 92vh;
+    padding: 10px 30px 10px 10px;
+}
+
+.result-lookup p {
+    font-size: 23px;
+    font-weight: 700;
+    margin: 15px 0px 15px 0px;
+}
+
+.result-lookup-area {
+    background-color: aliceblue;
+    border: 1px solid rgb(179, 179, 179);
+    width: 100%;
+    height: 770px;
+    padding: 10px;
+    display: flex;
+}
+
+.result-lookup-left {
+    width: 70%;
+    height: 750px;
+    border-right: 2px solid rgb(207, 207, 207);
+    float: left;
+    padding: 10px;
+}
+
+.result-lookup-search {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+}
+
+.result-lookup-search select {
+    width: 200px;
+    text-align: center;
+}
+
+.result-lookup-search input {
+    width: 200px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.result-lookup-search button {
+    width: 100px;
+    text-align: center;
+    background-color: rgb(167, 214, 155);
+    font-size: 15px;
+    font-weight: 600;
+    color: aliceblue;
+    border: 0;
+}
+
+
+.result-lookup-table {
+    margin-top: 20px;
+    overflow-y: auto;
+    height: 680px;
+}
+
+.result-lookup-right {
+    width: 30%;
+    height: 750px;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 15px 0px 15px;
+}
+
+.result-lookup-right-1 {
+    width: 100%;
+    height: 120px;
+    margin-top: 10px;
+}
+
+.result-lookup-right-2 {
+    width: 100%;
+    height: 120px;
+}
+
+.result-lookup-right-3 {
+    width: 100%;
+    height: 380px;
+    border: 1px solid gainsboro;
+    background-color: blanchedalmond;
+    overflow-y: auto;
+}
+
+.result-lookup-right p {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 7px 0px 7px 0px;
+}
+
+.result-lookup-right-3 p {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.result-lookup-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    background-color: rgb(167, 214, 155);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.search-cal {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sec_cal {
+    width: 90%;
+    margin: 20px auto;
+    font-family: "NotoSansR";
+    border: 1px solid rgb(204, 204, 204);
+    padding: 10px;
+}
+
+.search-cal input {
+    height: 30px;
+}
+
+.search-cal button {
+    background-color: rgb(167, 214, 155);
+    color: #ffffff;
+    border: 0;
+    width: 70px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.sec_cal .cal_nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 78px;
+}
+
+.sec_cal .cal_nav .year-month {
+    width: 200px;
+    text-align: center;
+    line-height: 1;
+}
+
+.sec_cal .cal_nav .nav {
+    display: flex;
+    border: 1px solid #333333;
+    border-radius: 5px;
+}
+
+.sec_cal .cal_nav .go-prev,
+.sec_cal .cal_nav .go-next {
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 10;
+    color: #000;
+    display: flex;
+    text-decoration-line: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec_cal .cal_wrap {
+    padding-top: 10px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.sec_cal .cal_wrap .days {
+    display: flex;
+    border-top: 1px solid #cecece;
+}
+
+.sec_cal .cal_wrap::after {
+    top: 368px;
+}
+
+.sec_cal .cal_wrap .day {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 7);
+    height: 40px;
+    text-align: left;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    border-radius:5px;
+}
+
+.sec_cal .cal_wrap .day:hover {
+    cursor: pointer;
+    background-color: #dfdfdf;
+}
+
+.current.today {background: #a8cfa7;}
+
+.sec_cal .cal_wrap .dates {
+    display: flex;
+    flex-flow: wrap;
+    height: 250px;
+}
+
+.sec_cal .cal_wrap .day:nth-child(7n -1) {
+    color: #3c6ffa;
+}
+
+.sec_cal .cal_wrap .day:nth-child(7n) {
+    color: #ed2a61;
+}
+
+.sec_cal .cal_wrap .day.disable {
+    color: #cfcfcf;
+}
+
+.day.selected {
+    border: 1px solid rgb(180, 180, 180);
+    background-color: #bdbdbd;
+}
+
+.data-lookup-button {
+    width: 100%;
+    padding: 30px;
+}
+
+.data-lookup-button div {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.data-lookup-button div button{
+    width: 120px;
+    height:70px;
+    margin-top: 20px;
+    border: 1px solid rgb(146, 146, 146);
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.toggle-button.active {
+    background-color: yellow;
+}
+
+.popup{
+    position: absolute;
+    top: 150px;
+    left: 200px;
+
+    width: 1550px;
+    height: 600px;
+
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    z-index: 1;
+}
+
+#myCanvas,
+#myCanvas2 {
+    position: absolute;
+}

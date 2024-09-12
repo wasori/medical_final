@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Robot</title>
+    <link rel="icon" href="../img/icon.ico">
+    <link href="../css/data.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+</head>
+
+<body>
+    <div class="popup" id="popup">
+        <div id = "floor2">
+            <canvas id="myCanvas" width="1415px" height="467px"></canvas>
+            <img id="image1" src="../img/new_1floor.png" width="1415px" height="467px">
+        </div>
+        <div id = "floor3" style="display: none;">
+            <canvas id="myCanvas2" width="1415px" height="467px"></canvas>
+            <img id="image2" src="../img/new_1floor.png" width="1415px" height="467px">
+        </div>
+        <div><button type="button" onclick="popclose();">닫기</button></div>
+    </div>
+    <!------------------- 네브바 ----------------------->
+    <nav>
+        <div class="navbar__logo">
+            <a href="#">NARMS</a>
+        </div>
+        <ul class="navbar__menu">
+            <li><a href="./robo.html">로봇관리</a></li>
+            <li><a href="./view.html">모니터링</a></li>
+            <li><a href="./data.html">데이터조회</a></li>
+        </ul>
+        <ul class="navbar__icons">
+            <li><a href="#">admin</a></li>
+            <li><a href="./signin.html">LogOut</a></li>
+        </ul>
+    </nav>
+    <!------------------------------------------------>
+    <div class="data-left">
+        <div class="data-lookup">
+            <p>데이터 조회</p>
+            <div class="data-lookup-area">
+                <div class="search-cal">
+                    <input id="search-input" type="text" placeholder="" style="text-align: center;">
+                    <button type="button" onclick='getDate()' id="data-button">조회</button>
+                </div>
+                <div class="sec_cal">
+                    <div class="cal_nav">
+                        <a href="javascript:;" class="nav-btn go-prev">&#60;</a>
+                        <div class="year-month"></div>
+                        <a href="javascript:;" class="nav-btn go-next">&#62;</a>
+                    </div>
+                    <div class="cal_wrap">
+                        <div class="days">
+                            <div class="day">월</div>
+                            <div class="day">화</div>
+                            <div class="day">수</div>
+                            <div class="day">목</div>
+                            <div class="day">금</div>
+                            <div class="day">토</div>
+                            <div class="day">일</div>
+                        </div>
+                        <div class="dates"></div>
+                    </div>
+                </div>
+                <div class="data-lookup-button">
+                    <div><button class="toggle-button active" data-target="loc-table" id="location">Location</button></div>
+                    <div><button class="toggle-button" data-target="vis-table" id="vision">Vision</button></div>
+                    <div><button class="toggle-button" data-target="iot-table" id="iot"> Sensor</button></div>
+                    <div><button class="toggle-button" data-target="loc-table"></button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="data-right">
+        <div class="result-lookup">
+            <p>결과 조회</p>
+            <div class="result-lookup-area">
+                <div class="result-lookup-left">
+                    <div class="result-lookup-search">
+                        <select>
+                            <option value="" disabled selected>검색 옵션</option>
+                            <option value="search-option1">검색 옵션1</option>
+                            <option value="search-option2">검색 옵션2</option>
+                            <option value="search-option3">검색 옵션3</option>
+                        </select>
+                        <input type="text" placeholder="검색어를 입력해주세요.">
+                        <button>검색</button>
+                    </div>
+                    <div class="result-lookup-table" id="loc-table">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>로봇 번호</th>
+                                    <th>로봇 위치</th>
+                                    <th>업데이트 시간</th>
+                                </tr>
+                            </thead>
+                            <tbody id="location-tbody">
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="result-lookup-table" id="vis-table" style="display: none;">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>호실</th>
+                                    <th>병상</th>
+                                    <th>행동 감지</th>
+                                    <th>업데이트 시간</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vis-tbody">
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr height="50">
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="result-lookup-table" id="iot-table" style="display: none;">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>로봇 번호</th>
+                                    <th>로봇 위치</th>
+                                    <th>센서 종류</th>
+                                    <th>측정 값</th>
+                                    <th>업데이트 시간</th>
+                                </tr>
+                            </thead>
+                            <tbody id="iot-tbody">
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="result-lookup-right">
+                    <div class="result-lookup-right-1" id="loc-table">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>로봇ID</th>
+                                    <th>위치</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="result-lookup-right-1" style="display: none;" id="vis-table">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>층</th>
+                                    <th>위치</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="result-lookup-right-1" style="display: none;" id="iot-table">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>ID</th>
+                                    <th>층</th>
+                                    <th>위치</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="result-lookup-right-1" style="display: none;">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>로봇ID</th>
+                                    <th>위치</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="result-lookup-right-2" id="loc-table">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>층</th>
+                                    <th>시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="result-lookup-right-2" id="vis-table" style="display: none;">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>감지</th>
+                                    <th>시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <div class="result-lookup-right-2" id="iot-table" style="display: none;">
+                        <table class="t1">
+                            <colgroup>
+                                <col style="width: auto;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <thead>
+                                <tr height="50">
+                                    <th>센서</th>
+                                    <th>측정 값</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr height="50">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                        </table>
+                    </div>
+                    <p>진행상태</p>
+                    <div class="result-lookup-right-3">
+                    </div>
+                    <button class="result-lookup-button" type="button"
+                        onClick="location.href='main.html'">로봇메인화면가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../js/data.js"></script>
+</body>
+
+</html>

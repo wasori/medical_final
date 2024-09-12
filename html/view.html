@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Robot</title>
+    <link rel="icon" href="../img/icon.ico">
+    <link href="../css/view.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+</head>
+
+<body>
+    <div class="view-map">
+        <div class="view-map-area">
+            <div class = "view-title">
+                <span class = "view-main-title">Nursing Assistant Robot Monitoring System</span>
+            </div>
+            <div id = "floor2">
+                <canvas id="myCanvas" width="1415px" height="467px"></canvas>
+                <img id="image1" src="../img/new_2floor.png" width="1415px" height="467px">
+                <img id="numbering" src="../img/robot_number.png" width="150px" height="300px" style=" border-radius: 4px;">
+            </div>
+        </div>
+    </div>
+    <div class="view-alert">
+ <div class="view-alert-area">
+            <div class="view">
+                <div class="box">
+                    <span class="txt"><span class="water">물</span> 감지</span>
+                    <span class="time"></span>
+                </div>
+                <div class="box">
+                    <span class="txt"><span class="fire">화재</span> 감지</span>
+                    <span class="time"></span>
+                </div>
+                <div class="box">
+                    <span class="txt"><span class="dust">먼지</span> 감지</span>
+                    <span class="time"></span>
+                </div>
+            </div>
+            <div class="view">
+                <div class="box">
+                    <span class="txt"><span class="down">낙상</span> 감지</span>
+                    <span class="time"></span>
+                </div>
+                <div class="box">
+                    <span class="txt"><span class="pose">욕창</span> 감지</span>
+                    <span class="time"></span>
+                </div>
+                <div class="box">
+                    <!-- <span class="txt">ZK01 로봇 멈춤 감지</span>
+                    <span class="time"></span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/view.js"></script>
+</body>
+
+</html>

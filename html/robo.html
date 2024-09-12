@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Robot</title>
+    <link rel="icon" href="../img/icon.ico">
+    <link href="../css/robo.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js"></script>
+</head>
+
+<body>
+    <div class="popup" id="popup">
+    </div>
+    <!------------------- 네브바 ----------------------->
+    <nav>
+        <div class="navbar__logo">
+            <a href="#">NARMS</a>
+        </div>
+        <ul class="navbar__menu">
+            <li><a href="./robo.html">로봇관리</a></li>
+            <li><a href="./view.html">모니터링</a></li>
+            <li><a href="./data.html">데이터조회</a></li>
+        </ul>
+        <ul class="navbar__icons">
+            <li><a href="#">admin</a></li>
+            <li><a href="./signin.html">LogOut</a></li>
+        </ul>
+    </nav>
+    <!------------------------------------------------>
+    <div class="robo-left">
+        <div class="robo-map">
+            <p>OOO 환경 맵</p>
+            <div class="robo-map-area">
+                <!-- 1023 x 753 -->
+                <div id="floor2">
+                    <canvas id="myCanvas" width="1415px" height="467px"></canvas>
+                    <canvas id="myCanvas2" width="1415px" height="467px"></canvas>
+                    <img id="image1" src="../img/new_2floor.png" width="1415px" height="467px" >
+                    <img src="../img/robo_number3.png" width="1000px" height="65px" style=" border-radius: 4px; float: right; margin-top:35px; margin-right: 10px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="robo-right">
+        <div class="robo-manager">
+            <div class="robo-manager-area">
+                <div class="robo-control-area">
+                    <p>로봇 제어</p>
+                    <div class="robo-control-area-1">
+                        <span>로봇</span>
+                        <select id="id">
+                            <option value="0" selected>-</option>
+                            <option value="ZK01">ZK01</option>
+                            <option value="ZK02">ZK02</option>
+                            <option value="ZK03">ZK03</option>
+                            <option value="ZK05">ZK05</option>
+                            <option value="ZK06">ZK06</option>
+                        </select>
+                        <span>호실</span>
+                        <select id="room">
+                            <option value="0" disabled selected>-</option>
+                            <option value="101">101</option>
+                            <option value="102">102</option>
+                            <option value="103">103</option>
+                            <option value="104">104</option>
+                            <option value="104">105</option>
+                        </select>
+                        <span>병상</span>
+                        <select id="sickbed">
+                            <option value="0" disabled selected>-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </div>
+                    <div class="robo-control-area-2">
+                        <button type="button" id="start">시작</button>
+                        <button type="button" id="patrol">패트롤</button>
+                        <button type="button" id="return">복귀</button>
+                        <button type="button" id="stop">정지</button>
+                    </div>
+                </div>
+                <div class="robo-alert">
+                    <p>알람</p>
+                    <div class="robo-alert-area">
+                        <ul class="robo-alarm-list" id="alarm-list">
+                        </ul>
+                    </div>
+                </div>
+                <div class="robo-move">
+                    <p>로봇상태</p>
+                    <div class="robo-move-area">
+                        <ul class="robo-move-list" id="robo-move-list">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../js/robo.js"></script>
+</body>
+
+</html>
